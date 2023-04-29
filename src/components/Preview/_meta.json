@@ -1,13 +1,10 @@
 {
-"previews":[
-       { "id":1,
-    "title": "title1",
-    "description":"example"
-  },
+  "previews": [
+    { "id": 1, "title": "title1", "description": "example" },
     {
-        "id":2,
-    "title": "title2",
-    "description":"example2"
+      "id": 2,
+      "title": "title2",
+      "description": "example2"
     }
-]
+  ]
 }

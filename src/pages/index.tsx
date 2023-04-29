@@ -1,10 +1,28 @@
-import { Navigation } from "@/components";
+import { getAllPosts } from "@/lib/api";
+import { PostType } from "@/types/types";
+import { NextPage } from "next";
+import Link from "next/link";
 
-export default function Home() {
+const Home: NextPage<{ posts: PostType[] }> = ({ posts }) => {
   return (
-    <>
-      <Navigation />
-      <div>home</div>
-    </>
+    <ul>
+      {posts.map((post, index) => (
+        <Link key={index} href={`/post/${post.slug}`}>
+          <li>{post.title}</li>
+        </Link>
+      ))}
+    </ul>
   );
+};
+
+export async function getStaticProps() {
+  const posts = getAllPosts(["slug", "title", "date"]);
+
+  return {
+    props: {
+      posts,
+    },
+  };
 }
+
+export default Home;
