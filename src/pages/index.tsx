@@ -2,13 +2,14 @@ import { getAllPosts } from "@/lib/api";
 import { PostType } from "@/types/types";
 import { NextPage } from "next";
 import Link from "next/link";
+import { PreviewItem } from "@/components/home";
 
 const Home: NextPage<{ posts: PostType[] }> = ({ posts }) => {
   return (
     <ul>
       {posts.map((post, index) => (
         <Link key={index} href={`/post/${post.slug}`}>
-          <li>{post.title}</li>
+          <PreviewItem post={post} />
         </Link>
       ))}
     </ul>
@@ -16,7 +17,7 @@ const Home: NextPage<{ posts: PostType[] }> = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const posts = getAllPosts(["slug", "title", "date"]);
+  const posts = getAllPosts(["slug", "title", "date","content","coverImage"]);
 
   return {
     props: {

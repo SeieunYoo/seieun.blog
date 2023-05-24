@@ -1,13 +1,16 @@
 import { PostType } from "@/types/types";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
+import markdownStyles from "./markdown.module.css";
 
 const Post = ({ post }: { post: PostType }) => {
   return (
     <>
+    <div className="w-fit p-4">
       <div>{post.title}</div>
       <div>{post.date}</div>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <div className= {markdownStyles['markdown']} dangerouslySetInnerHTML={{ __html: post.content }} />
+      </div>
     </>
   );
 };

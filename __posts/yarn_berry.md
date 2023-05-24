@@ -1,10 +1,11 @@
 ---
-title: yarn-berry setting
-author: 바보
+title: yarn berry 세팅하기
 date: "2023-4-30"
+coverImage: https://mblogthumb-phinf.pstatic.net/MjAxNjEwMjNfMTUz/MDAxNDc3MjI3MTQzODcw.HRb8raTYXi7WUIcvFuXFUIvACB4Cb5fKllFrR3JSLQMg.DCIIkGk7gr_uBIE3ytGgmfVIZuJzvQJ482XOtgJqlWkg.JPEG.retspe/%EC%B0%B8%EC%89%BD%EC%A3%A0.jpg?type=w800
 ---
 
 yarn berry 가 나오게 된 과정
+
 https://velog.io/@altmshfkgudtjr/yarn2%EC%99%80-%ED%95%A8%EA%BB%98-Plug-n-Play%EB%A5%BC-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90
 
 > 결론적으로 node_modules 수백개의 패키지가 함께 의존성 설치되기 때문이다. yard berry 를 활용해서 더 이상 node_modules 가 아닌
@@ -13,6 +14,8 @@ https://velog.io/@altmshfkgudtjr/yarn2%EC%99%80-%ED%95%A8%EA%BB%98-Plug-n-Play%E
 yarn berry setting 과정
 https://kasterra.github.io/setting-yarn-berry/
 https://velog.io/@creco/next.js-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0
+
+---
 
 0. `next / react 로 프로젝트 세팅`
 
@@ -31,3 +34,5 @@ npx create-next-app@latest my-proj --template typescript //next 로 CNA
 5. `yarn add next@13.0.5` -> next 최신 버전
 6. eslint / prettier 설정
    - `yarn add -D @typescript-eslint/eslint-plugin eslint-config-prettier eslint-plugin-prettier`
+
+---
