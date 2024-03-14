@@ -4,33 +4,31 @@ import markdownToHtml from "@/lib/markdownToHtml";
 import markdownStyles from "./markdown.module.css";
 import Image from "next/image";
 import Head from "next/head";
+import useParseDate from "@/hooks/useParseDate";
 
 const Post = ({ post }: { post: PostType }) => {
+  const { title, date, content, coverImage } = post;
+  const parsedDate = useParseDate(date);
   return (
     <>
       <Head>
-        <title>{post.title}</title>
+        <title>{title}</title>
       </Head>
       <div className="p-4">
         <section className="flex flex-col items-center">
           <header className="pb-[3rem]">
-            <div className="text-5xl font-bold w-full pb-10">{post.title}</div>
-            <div className="text-2xl flex justify-end w-full">{post.date}</div>
+            <div className="text-5xl font-bold w-full pb-10">{title}</div>
+            <div className="text-2xl flex justify-end w-full">
+              <span>
+                {parsedDate.year}년 {parsedDate.month}월 {parsedDate.day}일
+              </span>
+            </div>
           </header>
           {post.coverImage && (
-            <Image
-              src={post.coverImage}
-              alt={post.title}
-              width={500}
-              height={500}
-              className="pb-[3rem]"
-            />
+            <Image src={coverImage} alt={title} width={500} height={500} className="pb-[3rem]" />
           )}
         </section>
-        <div
-          className={markdownStyles["markdown"]}
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        <div className={markdownStyles["markdown"]} dangerouslySetInnerHTML={{ __html: content }} />
       </div>
     </>
   );
