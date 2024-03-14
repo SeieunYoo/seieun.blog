@@ -15,10 +15,46 @@
 .markdown ol {
   @apply list-decimal;
 }
+
+.markdown h1 {
+  @apply text-5xl mt-16 mb-4 leading-snug font-semibold;
+}
+
 .markdown h2 {
-  @apply text-4xl mt-12 mb-4 leading-snug;
+  @apply text-4xl mt-12 mb-4 leading-snug font-semibold;
 }
 
 .markdown h3 {
-  @apply text-3xl mt-8 mb-4 leading-snug;
+  @apply text-3xl mt-8 mb-4 leading-snug font-semibold;
+}
+
+.markdown a {
+  color: darkturquoise;
+}
+
+.markdown code {
+  background-color: floralwhite;
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 2px;
+}
+
+.markdown pre {
+  border: 1px solid grey;
+  border-radius: 5px;
+  color: white;
+  background-color: lightblue;
+}
+
+.markdown pre code {
+  background-color: inherit;
+  font-weight: 100;
+  color: black;
+}
+
+.markdown blockquote {
+  border: 1px solid powderblue;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: azure;
 }

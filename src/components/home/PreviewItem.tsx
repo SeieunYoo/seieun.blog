@@ -2,18 +2,22 @@ import { PostType } from "@/types/types";
 import Image from "next/image";
 
 export const PreviewItem = ({ post }: { post: PostType }) => {
-  const { title, date, content, coverImage } = post;
+  const { title, date, info, coverImage } = post;
   return (
     <>
-      <article className="bg-white w-full mb-20 h-[25rem] p-5 rounded-md flex">
-        <div className="flex-1">
-            image 들어갈 곳
-        </div>
+      <article className="w-full mb-20 h-[25rem] p-5 rounded-md flex border border-solid border-gray-300">
+        <Image
+          src={coverImage}
+          alt="coverImage"
+          width={250}
+          height={250}
+          className="pr-10 flex-1"
+        />
+
         <div className="flex-2 flex flex-col items-left gap-8 w-full">
-        <span>{date}</span>
-        {/* {coverImage && <Image src={coverImage} alt="coverImage" width={30} height={30}/>} */}
-        <div className="font-bold text-4xl">{title}</div>
-        <div className="text-2xl truncate">{content}</div>
+          <div className="font-bold text-4xl">{title}</div>
+          <span>{date}</span>
+          <div className="text-2xl truncate">{info}</div>
         </div>
       </article>
     </>

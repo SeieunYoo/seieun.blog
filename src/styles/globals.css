@@ -2,14 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-    font-size: 62.5%;
-}
-body {
-  /* background: linear-gradient(330deg, #2ebfff63, rgba(232, 166, 255, 0.91));
-  background-repeat: no-repeat; */
+html {
+  font-size: 62.5%;
 }
 
+body {
+  height: 100vh;
+}
 a,
 button {
   cursor: pointer;

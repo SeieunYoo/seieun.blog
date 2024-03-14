@@ -1,7 +1,8 @@
 ---
 title: yarn berry 세팅하기
-date: "2023-4-30"
-coverImage: https://mblogthumb-phinf.pstatic.net/MjAxNjEwMjNfMTUz/MDAxNDc3MjI3MTQzODcw.HRb8raTYXi7WUIcvFuXFUIvACB4Cb5fKllFrR3JSLQMg.DCIIkGk7gr_uBIE3ytGgmfVIZuJzvQJ482XOtgJqlWkg.JPEG.retspe/%EC%B0%B8%EC%89%BD%EC%A3%A0.jpg?type=w800
+date: 20230429
+info: yarn berry 공부해보자
+coverImage: https://velog.velcdn.com/images/yoose1002/post/192e98b7-eb1b-45f3-a8df-d929ab0b1d34/image.png
 ---
 
 yarn berry 가 나오게 된 과정

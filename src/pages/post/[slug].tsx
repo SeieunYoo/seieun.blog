@@ -2,14 +2,35 @@ import { PostType } from "@/types/types";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
 import markdownStyles from "./markdown.module.css";
+import Image from "next/image";
+import Head from "next/head";
 
 const Post = ({ post }: { post: PostType }) => {
   return (
     <>
-    <div className="w-fit p-4">
-      <div>{post.title}</div>
-      <div>{post.date}</div>
-      <div className= {markdownStyles['markdown']} dangerouslySetInnerHTML={{ __html: post.content }} />
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <div className="p-4">
+        <section className="flex flex-col items-center">
+          <header className="pb-[3rem]">
+            <div className="text-5xl font-bold w-full pb-10">{post.title}</div>
+            <div className="text-2xl flex justify-end w-full">{post.date}</div>
+          </header>
+          {post.coverImage && (
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              width={300}
+              height={300}
+              className="pb-[3rem]"
+            />
+          )}
+        </section>
+        <div
+          className={markdownStyles["markdown"]}
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
       </div>
     </>
   );
@@ -26,6 +47,7 @@ export async function getStaticProps({
     "title",
     "slug",
     "description",
+    "coverImage",
     "date",
     "lastmod",
     "weight",
