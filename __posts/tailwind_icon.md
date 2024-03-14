@@ -76,7 +76,7 @@ Icon 컴포넌트에서 기존의 클래스네임 동적 할당에서
 - stroke 에만 color를 전달하기 위해 isStroke props 를 계속 넣어야 함
   - `<Icon color="gray" isStroke/>`
 
-**Icon 컴포넌트 쪽에서는 **
+**Icon 컴포넌트 쪽에서는**
 
 - colors 객체에 계속 color 를 주입해야 됨
 

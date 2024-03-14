@@ -5,15 +5,18 @@ import markdownStyles from "./markdown.module.css";
 import Image from "next/image";
 import Head from "next/head";
 import useParseDate from "@/hooks/useParseDate";
+import { Navigation } from "@/components";
 
 const Post = ({ post }: { post: PostType }) => {
   const { title, date, content, coverImage } = post;
   const parsedDate = useParseDate(date);
+
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
+      <Navigation />
       <div className="p-4">
         <section className="flex flex-col items-center">
           <header className="pb-[3rem]">
