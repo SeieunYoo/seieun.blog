@@ -18,7 +18,7 @@ export const PreviewItem = ({ post }: { post: PostType }) => {
         />
 
         <div className="flex-2 flex flex-col items-left gap-8 w-full">
-          <div className="font-bold text-4xl">{title}</div>
+          <div className="font-bold text-4xl overflow-hidden text-ellipsis">{title}</div>
           <span>
             {parsedDate.year}년 {parsedDate.month}월 {parsedDate.day}일
           </span>
