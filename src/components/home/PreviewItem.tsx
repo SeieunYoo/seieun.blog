@@ -8,13 +8,13 @@ export const PreviewItem = ({ post }: { post: PostType }) => {
 
   return (
     <>
-      <article className="w-full mb-20 h-[25rem] p-5 rounded-md flex border border-solid border-gray-300">
+      <article className="w-full mb-20 tablet:h-[25rem] p-5 rounded-md flex border border-solid border-gray-300 flex-col tablet:flex-row">
         <Image
           src={coverImage}
-          alt="coverImage"
+          alt={title}
           width={250}
           height={250}
-          className="pr-10 flex-1"
+          className="pb-10 flex-1 w-full tablet:pr-10 tablet:pb-0 tablet:w-[revert-layer]"
         />
 
         <div className="flex-2 flex flex-col items-left gap-8 w-full">
