@@ -1,5 +1,5 @@
 .markdown {
-  @apply text-2xl leading-relaxed my-6;
+  @apply text-2xl leading-relaxed my-6 truncate whitespace-normal;
 }
 
 .markdown p,
