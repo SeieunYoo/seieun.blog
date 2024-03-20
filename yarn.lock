@@ -1980,6 +1980,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/gtag.js@npm:^0.0.19":
+  version: 0.0.19
+  resolution: "@types/gtag.js@npm:0.0.19"
+  checksum: 7ecd5ae645a33f02ca886f2ba0419b20c95358b80ef389a2dc42e80fbf850e92139e868f18d04285f93cdadbf6cb8861a64a7e77cc42eb6b8c84d3e812604192
+  languageName: node
+  linkType: hard
+
 "@types/hast@npm:^2.0.0":
   version: 2.3.4
   resolution: "@types/hast@npm:2.3.4"
@@ -6534,6 +6541,7 @@ __metadata:
   resolution: "seieun.blog@workspace:."
   dependencies:
     "@svgr/webpack": ^8.1.0
+    "@types/gtag.js": ^0.0.19
     "@types/node": 18.14.6
     "@types/react": 18.0.28
     "@types/react-dom": 18.0.11

@@ -29,6 +29,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@svgr/webpack", "npm:8.1.0"],\
+            ["@types/gtag.js", "npm:0.0.19"],\
             ["@types/node", "npm:18.14.6"],\
             ["@types/react", "npm:18.0.28"],\
             ["@types/react-dom", "npm:18.0.11"],\
@@ -3331,6 +3332,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/debug", "npm:4.1.7"],\
             ["@types/ms", "npm:0.7.31"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/gtag.js", [\
+        ["npm:0.0.19", {\
+          "packageLocation": "./.yarn/cache/@types-gtag.js-npm-0.0.19-8d50f84a08-7ecd5ae645.zip/node_modules/@types/gtag.js/",\
+          "packageDependencies": [\
+            ["@types/gtag.js", "npm:0.0.19"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8693,6 +8703,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["seieun.blog", "workspace:."],\
             ["@svgr/webpack", "npm:8.1.0"],\
+            ["@types/gtag.js", "npm:0.0.19"],\
             ["@types/node", "npm:18.14.6"],\
             ["@types/react", "npm:18.0.28"],\
             ["@types/react-dom", "npm:18.0.11"],\
