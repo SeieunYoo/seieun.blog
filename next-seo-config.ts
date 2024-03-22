@@ -17,7 +17,7 @@ const DEFAULT_SEO: DefaultSeoProps = {
     ],
   },
   twitter: {
-    cardType: "summary_large_image",
+    cardType: "summary",
   },
 };
 
