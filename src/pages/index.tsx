@@ -5,13 +5,11 @@ import Link from "next/link";
 import { PreviewItem } from "@/components/home";
 import { Navigation } from "@/components";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 const Home: NextPage<{ posts: PostType[] }> = ({ posts }) => {
   return (
     <>
-      <Head>
-        <title>seieun.blog</title>
-      </Head>
       <Navigation />
       <ul>
         {posts.map((post, index) => (

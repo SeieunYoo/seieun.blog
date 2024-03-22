@@ -6,16 +6,44 @@ import Image from "next/image";
 import Head from "next/head";
 import useParseDate from "@/hooks/useParseDate";
 import { Navigation } from "@/components";
+import { NextSeo } from "next-seo";
+import { metaData } from "@/constants/metaData";
 
 const Post = ({ post }: { post: PostType }) => {
-  const { title, date, content, coverImage } = post;
+  const { title, date, content, coverImage, info, slug } = post;
   const parsedDate = useParseDate(date);
 
+  // function parseLinks(html: string) {
+  //   // 정규식 패턴을 사용하여 링크를 찾음
+  //   let linkPattern = /(?:https?|ftp):\/\/[\n\S]+/g;
+
+  //   // 링크를 찾아내어 <a> 태그로 변환
+  //   let parsedHtml = html.replace(linkPattern, function (match: string) {
+  //     console.log(html);
+  //     return '<a href="' + match + '">' + match + "</a>";
+  //   });
+
+  //   return parsedHtml;
+  // }
+
+  // 변환된 HTML 출력
+  // console.log(parseLinks(content));
+  // console.log(content);
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <NextSeo
+        title={title}
+        description={info}
+        canonical={`${metaData.url}/post/${slug}`}
+        openGraph={{
+          url: `${metaData.url}/post/${slug}`,
+          images: [
+            {
+              url: coverImage,
+            },
+          ],
+        }}
+      />
       <Navigation />
       <div className="p-4">
         <section className="flex flex-col items-center">
@@ -28,7 +56,14 @@ const Post = ({ post }: { post: PostType }) => {
             </div>
           </header>
           {post.coverImage && (
-            <Image src={coverImage} alt={title} width={500} height={500} className="pb-[3rem]" />
+            <Image
+              src={coverImage}
+              alt={title}
+              width={500}
+              height={500}
+              className="pb-[3rem] w-auto h-auto"
+              priority={false}
+            />
           )}
         </section>
         <div className={markdownStyles["markdown"]} dangerouslySetInnerHTML={{ __html: content }} />
@@ -50,6 +85,7 @@ export async function getStaticProps({
     "description",
     "coverImage",
     "date",
+    "info",
     "lastmod",
     "weight",
     "content",

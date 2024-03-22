@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
+import DEFAULT_SEO from "../../next-seo-config";
+import { DefaultSeo } from "next-seo";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -15,5 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <DefaultSeo {...DEFAULT_SEO} />
+      <Component {...pageProps} />
+    </>
+  );
 }
