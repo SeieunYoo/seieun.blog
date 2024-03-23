@@ -1,9 +1,21 @@
 import useDarkMode from "@/hooks/useDarkMode";
 import Link from "next/link";
+import { useEffect } from "react";
 import { Icon } from "../common";
 
 export const Navigation = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
+  useEffect(() => {
+    const utterancesElement = document.querySelector("iframe.utterances-frame") as HTMLIFrameElement;
+    if (utterancesElement) {
+      const commentTheme = darkMode ? "photon-dark" : "github-light";
+
+      utterancesElement.contentWindow?.postMessage(
+        { type: "set-theme", theme: commentTheme },
+        "https://utteranc.es/",
+      );
+    }
+  }, [darkMode]);
   return (
     <nav className="flex justify-between p-[3rem]">
       <Link href="/" className="flex gap-1">

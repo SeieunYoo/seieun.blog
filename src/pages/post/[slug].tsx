@@ -3,11 +3,11 @@ import { getAllPosts, getPostBySlug } from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
 import markdownStyles from "./markdown.module.css";
 import Image from "next/image";
-import Head from "next/head";
 import useParseDate from "@/hooks/useParseDate";
 import { Navigation } from "@/components";
 import { NextSeo } from "next-seo";
 import { metaData } from "@/constants/metaData";
+import Comments from "@/components/Post/Comments";
 
 const Post = ({ post }: { post: PostType }) => {
   const { title, date, content, coverImage, info, slug } = post;
@@ -67,6 +67,7 @@ const Post = ({ post }: { post: PostType }) => {
           )}
         </section>
         <div className={markdownStyles["markdown"]} dangerouslySetInnerHTML={{ __html: content }} />
+        <Comments />
       </div>
     </>
   );
