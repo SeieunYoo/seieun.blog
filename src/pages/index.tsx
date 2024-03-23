@@ -4,8 +4,6 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { PreviewItem } from "@/components/home";
 import { Navigation } from "@/components";
-import Head from "next/head";
-import { NextSeo } from "next-seo";
 
 const Home: NextPage<{ posts: PostType[] }> = ({ posts }) => {
   return (
