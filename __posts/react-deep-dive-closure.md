@@ -1,3 +1,10 @@
+---
+title: 리액트딥다이브(클로저 & 비동기 함수 로직 정리)
+date: 20250712
+info: 리액트딥다이브파보기
+coverImage: https://velog.velcdn.com/images/yoose1002/post/3a01b3f5-1705-45da-ac7a-62d91558e88c/image.png
+---
+
 ![](https://velog.velcdn.com/images/yoose1002/post/3a01b3f5-1705-45da-ac7a-62d91558e88c/image.png)
 
 ## 클로저
