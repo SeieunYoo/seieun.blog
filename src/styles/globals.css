@@ -1,26 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-
-html {
-  font-size: 62.5%;
-  font-family: 'Pretendard-Regular';
-}
-
-body {
-  height: 100vh;
-  /* background-color: var(--adaptive-background);
-  color: var(--adaptive-text); */
-}
-
-a,
+/* 폰트(Pretendard / JetBrains Mono)는 _document.tsx 에서 로드. 색·타이포는 Chakra 테마가 관리. */
 button {
   cursor: pointer;
 }

@@ -1,0 +1,119 @@
+/* 상세 페이지 .article-body — 시안(Tech/mono)의 본문 타이포그래피. dark는 html.dark로 오버라이드. */
+.body {
+  --body-ink: #2a2a2a;
+  --ink-strong: #161616;
+  --hash: #b6b6b2;
+  --code-inline-bg: #f3f2f0;
+  --card-line: #e3e3e0;
+  --muted: #6e6e6e;
+}
+
+:global(html.dark) .body {
+  --body-ink: #c2c2c8;
+  --ink-strong: #fafafa;
+  --hash: #55555c;
+  --code-inline-bg: #1d1d22;
+  --card-line: #232328;
+  --muted: #85858d;
+}
+
+.body p {
+  font: 400 16px/1.78 'Pretendard', sans-serif;
+  color: var(--body-ink);
+  margin: 0 0 20px;
+  word-break: keep-all;
+}
+
+.body h1 {
+  font: 700 26px/1.3 'Pretendard', sans-serif;
+  letter-spacing: -0.02em;
+  margin: 36px 0 16px;
+  color: var(--ink-strong);
+  scroll-margin-top: 80px;
+}
+
+.body h2 {
+  font: 700 21px/1.4 'Pretendard', sans-serif;
+  letter-spacing: -0.02em;
+  margin: 30px 0 14px;
+  color: var(--ink-strong);
+  scroll-margin-top: 80px;
+}
+
+.body h2 .hash {
+  color: var(--hash);
+}
+
+.body h3 {
+  font: 700 17px/1.45 'Pretendard', sans-serif;
+  margin: 24px 0 10px;
+  color: var(--ink-strong);
+  scroll-margin-top: 80px;
+}
+
+.body a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--muted);
+}
+.body a:hover {
+  text-decoration-color: currentColor;
+}
+
+.body ul,
+.body ol {
+  margin: 0 0 20px;
+  padding-left: 22px;
+  color: var(--body-ink);
+  font: 400 16px/1.78 'Pretendard', sans-serif;
+}
+.body ul { list-style: disc; }
+.body ol { list-style: decimal; }
+.body li { margin: 6px 0; }
+
+.body code {
+  font: 500 13px/1 'JetBrains Mono', monospace;
+  background: var(--code-inline-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--ink-strong);
+}
+
+.body pre {
+  font: 500 13px/1.7 'JetBrains Mono', monospace;
+  background: #15151a;
+  color: #e8e8e8;
+  padding: 16px 18px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 0 0 20px;
+  border: 1px solid var(--card-line);
+}
+
+.body pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: 13px;
+}
+
+.body blockquote {
+  border-left: 3px solid var(--card-line);
+  margin: 0 0 20px;
+  padding: 4px 0 4px 16px;
+  color: var(--muted);
+}
+.body blockquote p { margin: 0; }
+
+.body img {
+  width: 100%;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.body hr {
+  border: 0;
+  border-top: 1px solid var(--card-line);
+  margin: 32px 0;
+}

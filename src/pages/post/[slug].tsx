@@ -1,85 +1,154 @@
 import { PostType } from "@/types/types";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
-import markdownStyles from "./markdown.module.css";
+import articleStyles from "@/styles/article.module.css";
 import Image from "next/image";
-import useParseDate from "@/hooks/useParseDate";
+import Link from "next/link";
 import { Navigation } from "@/components";
 import { NextSeo } from "next-seo";
 import { metaData } from "@/constants/metaData";
 import Comments from "@/components/Post/Comments";
+import { Toc } from "@/components/Post/Toc";
+import { Box, Flex } from "@chakra-ui/react";
+import { ArrowIcon } from "@/components/ui/icons";
+import { addHeadingIdsAndToc, formatDate, readingTime, type TocItem } from "@/lib/post";
 
-const Post = ({ post }: { post: PostType }) => {
-  const { title, date, content, coverImage, info, slug } = post;
-  const parsedDate = useParseDate(date);
+type DetailProps = {
+  post: PostType;
+  toc: TocItem[];
+  readMinutes: number;
+};
 
-  // function parseLinks(html: string) {
-  //   // 정규식 패턴을 사용하여 링크를 찾음
-  //   let linkPattern = /(?:https?|ftp):\/\/[\n\S]+/g;
+const Post = ({ post, toc, readMinutes }: DetailProps) => {
+  const { title, date, content, coverImage, info, slug, tags } = post;
 
-  //   // 링크를 찾아내어 <a> 태그로 변환
-  //   let parsedHtml = html.replace(linkPattern, function (match: string) {
-  //     console.log(html);
-  //     return '<a href="' + match + '">' + match + "</a>";
-  //   });
-
-  //   return parsedHtml;
-  // }
-
-  // 변환된 HTML 출력
-  // console.log(parseLinks(content));
-  // console.log(content);
   return (
-    <>
+    <Box bg="detailBg" minH="100dvh">
       <NextSeo
         title={title}
         description={info}
         canonical={`${metaData.url}/post/${slug}`}
         openGraph={{
           url: `${metaData.url}/post/${slug}`,
-          images: [
-            {
-              url: coverImage,
-            },
-          ],
+          images: [{ url: coverImage }],
         }}
       />
-      <Navigation />
-      <div className="p-4">
-        <section className="flex flex-col items-center">
-          <header className="pb-[3rem]">
-            <div className="text-5xl font-bold w-full pb-10">{title}</div>
-            <div className="text-2xl flex justify-end w-full">
-              <span>
-                {parsedDate.year}년 {parsedDate.month}월 {parsedDate.day}일
-              </span>
-            </div>
-          </header>
-          {post.coverImage && (
-            <Image
-              src={coverImage}
-              alt={title}
-              width={500}
-              height={500}
-              className="pb-[3rem] w-auto h-auto"
-              priority={false}
-            />
+      <Navigation variant="detail" />
+
+      <Flex
+        gap={{ base: "32px", lg: "48px" }}
+        maxW="1080px"
+        mx="auto"
+        px={{ base: "20px", sm: "36px", lg: "48px" }}
+        pt={{ base: "28px", sm: "36px", lg: "48px" }}
+        pb={{ base: "56px", sm: "64px", lg: "80px" }}
+      >
+        <Box as="main" flex="1" minW={0}>
+          <Link href="/">
+            <Flex
+              as="span"
+              display="inline-flex"
+              align="center"
+              gap="8px"
+              mb="24px"
+              fontFamily="mono"
+              fontSize="12px"
+              fontWeight={500}
+              letterSpacing="0.04em"
+              color="monoFaint"
+              transition="color 0.15s"
+              _hover={{ color: "inkStrong" }}
+            >
+              <Box as="span" display="flex" transform="rotate(180deg)">
+                <ArrowIcon />
+              </Box>
+              cd ..
+            </Flex>
+          </Link>
+
+          <Box fontFamily="mono" fontSize="12px" fontWeight={500} color="monoFaint" mb="16px">
+            {formatDate(date)}
+            {tags?.[0] ? ` · ${tags[0]}` : ""} · {readMinutes} min read
+          </Box>
+
+          <Box
+            as="h1"
+            fontSize={{ base: "27px", lg: "36px" }}
+            fontWeight={700}
+            lineHeight="1.22"
+            letterSpacing="-0.03em"
+            color="inkStrong"
+            mb="32px"
+            css={{ textWrap: "balance" }}
+          >
+            {title}
+          </Box>
+
+          <Box
+            bg="cardBg"
+            border="1px solid"
+            borderColor="cardLine"
+            borderRadius={{ base: "6px", sm: "8px" }}
+            p={{ base: "20px", sm: "28px" }}
+            transition="background 0.25s ease, border-color 0.25s ease"
+          >
+            {coverImage && (
+              <Box position="relative" w="100%" h={{ base: "140px", sm: "180px" }} borderRadius="4px" overflow="hidden" bg="thumbBase">
+                <Image src={coverImage} alt={title} fill sizes="(max-width: 1080px) 100vw, 1000px" style={{ objectFit: "cover" }} priority={false} />
+              </Box>
+            )}
+            <Box mt="26px" className={articleStyles["body"]} dangerouslySetInnerHTML={{ __html: content }} />
+          </Box>
+
+          {tags && tags.length > 0 && (
+            <Flex gap="6px" mt="22px" wrap="wrap" align="center">
+              <Box
+                as="span"
+                fontFamily="mono"
+                fontSize="11px"
+                fontWeight={500}
+                letterSpacing="0.1em"
+                textTransform="uppercase"
+                color="monoFaint"
+                mr="4px"
+              >
+                Tags
+              </Box>
+              {tags.map((tag) => (
+                <Link key={tag} href={{ pathname: "/", query: { tag } }}>
+                  <Box
+                    fontFamily="mono"
+                    fontSize="12px"
+                    fontWeight={500}
+                    color="chipText"
+                    border="1px solid"
+                    borderColor="cardLine"
+                    bg="cardBg"
+                    borderRadius="4px"
+                    px="10px"
+                    py="6px"
+                    transition="color 0.15s, border-color 0.15s"
+                    _hover={{ color: "inkStrong", borderColor: "monoFaint" }}
+                  >
+                    #{tag}
+                  </Box>
+                </Link>
+              ))}
+            </Flex>
           )}
-        </section>
-        <div className={markdownStyles["markdown"]} dangerouslySetInnerHTML={{ __html: content }} />
-        <Comments />
-      </div>
-    </>
+
+          <Box mt="28px">
+            <Comments />
+          </Box>
+        </Box>
+
+        <Toc items={toc} />
+      </Flex>
+    </Box>
   );
 };
 
-export async function getStaticProps({
-  params,
-}: {
-  params: {
-    slug: string;
-  };
-}) {
+export async function getStaticProps({ params }: { params: { slug: string } }) {
   const post = getPostBySlug(params.slug, [
     "title",
     "slug",
@@ -87,34 +156,36 @@ export async function getStaticProps({
     "coverImage",
     "date",
     "info",
-    "lastmod",
-    "weight",
+    "tags",
     "content",
-    "fileName",
   ]);
-  const content = await markdownToHtml(post.content || "");
+  const rawContent = post.content || "";
+  const html = await markdownToHtml(rawContent);
+  const { html: content, toc } = addHeadingIdsAndToc(html);
+  const readMinutes = readingTime(rawContent);
+
+  const allPosts = getAllPosts(["slug", "title", "date", "info", "tags"]).map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    date: p.date,
+    ...(p.info ? { info: p.info } : {}),
+    ...(p.tags ? { tags: p.tags } : {}),
+  }));
 
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      post: { ...post, content },
+      toc,
+      readMinutes,
+      allPosts,
     },
   };
 }
 
 export async function getStaticPaths() {
   const posts = getAllPosts(["slug"]);
-
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      };
-    }),
+    paths: posts.map((post) => ({ params: { slug: post.slug } })),
     fallback: false,
   };
 }

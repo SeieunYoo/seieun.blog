@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
 import DEFAULT_SEO from "../../next-seo-config";
 import { DefaultSeo } from "next-seo";
+import { Provider } from "@/components/ui/provider";
+import { SearchProvider } from "@/components/Search/SearchProvider";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -17,10 +19,13 @@ export default function App({ Component, pageProps }: AppProps) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+
   return (
-    <>
+    <Provider>
       <DefaultSeo {...DEFAULT_SEO} />
-      <Component {...pageProps} />
-    </>
+      <SearchProvider posts={pageProps.allPosts ?? []}>
+        <Component {...pageProps} />
+      </SearchProvider>
+    </Provider>
   );
 }

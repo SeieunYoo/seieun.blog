@@ -3,6 +3,7 @@ title: yarn berry 세팅하기
 date: 20230429
 info: yarn berry 공부해보자
 coverImage: https://velog.velcdn.com/images/yoose1002/post/192e98b7-eb1b-45f3-a8df-d929ab0b1d34/image.png
+tags: [Tooling, Yarn]
 ---
 
 yarn berry 가 나오게 된 과정

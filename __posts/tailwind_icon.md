@@ -3,6 +3,7 @@ title: Icon 컴포넌트에 color 넣어봅쉬다🌈 (ft. tailwind, twin.macro)
 date: 20230505
 info: 그 밈 작업 중에 발견한 것
 coverImage: https://velog.velcdn.com/images/yoose1002/post/192e98b7-eb1b-45f3-a8df-d929ab0b1d34/image.png
+tags: [CSS, Tailwind]
 ---
 
 그 밈 서비스는 tailwind 기반 css 를 작업하고 있다.
