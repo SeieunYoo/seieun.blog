@@ -99,72 +99,74 @@
 }
 
 /* 코드블럭 신택스 하이라이팅 (rehype-highlight / highlight.js 토큰).
+   토큰 클래스(hljs-*)는 dangerouslySetInnerHTML 로 주입된 원본 클래스라
+   CSS Module 해시가 적용되면 매칭되지 않으므로 :global 로 감싼다.
    pre 배경이 라이트/다크 모두 어둡기 때문에 단일 다크 팔레트를 사용한다. */
-.body .hljs-comment,
-.body .hljs-quote,
-.body .hljs-code,
-.body .hljs-formula {
+.body :global(.hljs-comment),
+.body :global(.hljs-quote),
+.body :global(.hljs-code),
+.body :global(.hljs-formula) {
   color: #8b949e;
 }
-.body .hljs-keyword,
-.body .hljs-doctag,
-.body .hljs-template-tag,
-.body .hljs-template-variable,
-.body .hljs-type,
-.body .hljs-variable.language_ {
+.body :global(.hljs-keyword),
+.body :global(.hljs-doctag),
+.body :global(.hljs-template-tag),
+.body :global(.hljs-template-variable),
+.body :global(.hljs-type),
+.body :global(.hljs-variable.language_) {
   color: #ff7b72;
 }
-.body .hljs-title,
-.body .hljs-title.class_,
-.body .hljs-title.function_ {
+.body :global(.hljs-title),
+.body :global(.hljs-title.class_),
+.body :global(.hljs-title.function_) {
   color: #d2a8ff;
 }
-.body .hljs-attr,
-.body .hljs-attribute,
-.body .hljs-literal,
-.body .hljs-meta,
-.body .hljs-number,
-.body .hljs-operator,
-.body .hljs-variable,
-.body .hljs-selector-attr,
-.body .hljs-selector-class,
-.body .hljs-selector-id {
+.body :global(.hljs-attr),
+.body :global(.hljs-attribute),
+.body :global(.hljs-literal),
+.body :global(.hljs-meta),
+.body :global(.hljs-number),
+.body :global(.hljs-operator),
+.body :global(.hljs-variable),
+.body :global(.hljs-selector-attr),
+.body :global(.hljs-selector-class),
+.body :global(.hljs-selector-id) {
   color: #79c0ff;
 }
-.body .hljs-regexp,
-.body .hljs-string,
-.body .hljs-meta .hljs-string {
+.body :global(.hljs-regexp),
+.body :global(.hljs-string),
+.body :global(.hljs-meta .hljs-string) {
   color: #a5d6ff;
 }
-.body .hljs-built_in,
-.body .hljs-symbol {
+.body :global(.hljs-built_in),
+.body :global(.hljs-symbol) {
   color: #ffa657;
 }
-.body .hljs-name {
+.body :global(.hljs-name) {
   color: #7ee787;
 }
-.body .hljs-section {
+.body :global(.hljs-section) {
   color: #79c0ff;
   font-weight: 600;
 }
-.body .hljs-bullet,
-.body .hljs-link,
-.body .hljs-selector-pseudo,
-.body .hljs-selector-tag {
+.body :global(.hljs-bullet),
+.body :global(.hljs-link),
+.body :global(.hljs-selector-pseudo),
+.body :global(.hljs-selector-tag) {
   color: #79c0ff;
 }
-.body .hljs-addition {
+.body :global(.hljs-addition) {
   color: #aff5b4;
   background: #033a16;
 }
-.body .hljs-deletion {
+.body :global(.hljs-deletion) {
   color: #ffdcd7;
   background: #67060c;
 }
-.body .hljs-emphasis {
+.body :global(.hljs-emphasis) {
   font-style: italic;
 }
-.body .hljs-strong {
+.body :global(.hljs-strong) {
   font-weight: 600;
 }
 
