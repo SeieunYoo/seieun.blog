@@ -98,6 +98,76 @@
   font-size: 13px;
 }
 
+/* 코드블럭 신택스 하이라이팅 (rehype-highlight / highlight.js 토큰).
+   pre 배경이 라이트/다크 모두 어둡기 때문에 단일 다크 팔레트를 사용한다. */
+.body .hljs-comment,
+.body .hljs-quote,
+.body .hljs-code,
+.body .hljs-formula {
+  color: #8b949e;
+}
+.body .hljs-keyword,
+.body .hljs-doctag,
+.body .hljs-template-tag,
+.body .hljs-template-variable,
+.body .hljs-type,
+.body .hljs-variable.language_ {
+  color: #ff7b72;
+}
+.body .hljs-title,
+.body .hljs-title.class_,
+.body .hljs-title.function_ {
+  color: #d2a8ff;
+}
+.body .hljs-attr,
+.body .hljs-attribute,
+.body .hljs-literal,
+.body .hljs-meta,
+.body .hljs-number,
+.body .hljs-operator,
+.body .hljs-variable,
+.body .hljs-selector-attr,
+.body .hljs-selector-class,
+.body .hljs-selector-id {
+  color: #79c0ff;
+}
+.body .hljs-regexp,
+.body .hljs-string,
+.body .hljs-meta .hljs-string {
+  color: #a5d6ff;
+}
+.body .hljs-built_in,
+.body .hljs-symbol {
+  color: #ffa657;
+}
+.body .hljs-name {
+  color: #7ee787;
+}
+.body .hljs-section {
+  color: #79c0ff;
+  font-weight: 600;
+}
+.body .hljs-bullet,
+.body .hljs-link,
+.body .hljs-selector-pseudo,
+.body .hljs-selector-tag {
+  color: #79c0ff;
+}
+.body .hljs-addition {
+  color: #aff5b4;
+  background: #033a16;
+}
+.body .hljs-deletion {
+  color: #ffdcd7;
+  background: #67060c;
+}
+.body .hljs-emphasis {
+  font-style: italic;
+}
+.body .hljs-strong {
+  font-weight: 600;
+}
+
 .body blockquote {
   border-left: 3px solid var(--card-line);
   margin: 0 0 20px;
