@@ -1,38 +1,58 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Box, Flex } from "@chakra-ui/react";
 import { PostType } from "@/types/types";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
 import articleStyles from "@/styles/article.module.css";
-import Image from "next/image";
-import Link from "next/link";
 import { Navigation } from "@/components";
-import { NextSeo } from "next-seo";
-import { metaData } from "@/constants/metaData";
 import Comments from "@/components/Post/Comments";
 import { Toc } from "@/components/Post/Toc";
-import { Box, Flex } from "@chakra-ui/react";
 import { ArrowIcon } from "@/components/ui/icons";
-import { addHeadingIdsAndToc, formatDate, readingTime, type TocItem } from "@/lib/post";
+import { addHeadingIdsAndToc, formatDate, readingTime } from "@/lib/post";
+import { metaData } from "@/constants/metaData";
 
-type DetailProps = {
-  post: PostType;
-  toc: TocItem[];
-  readMinutes: number;
-};
+export function generateStaticParams() {
+  return getAllPosts(["slug"]).map((post) => ({ slug: post.slug }));
+}
 
-const Post = ({ post, toc, readMinutes }: DetailProps) => {
-  const { title, date, content, coverImage, info, slug, tags } = post;
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const post = getPostBySlug(params.slug, ["title", "info", "coverImage", "slug"]);
+  return {
+    title: post.title,
+    description: post.info,
+    alternates: { canonical: `/post/${params.slug}` },
+    openGraph: {
+      url: `${metaData.url}/post/${params.slug}`,
+      title: post.title,
+      description: post.info,
+      ...(post.coverImage ? { images: [{ url: post.coverImage }] } : {}),
+    },
+  };
+}
+
+export default async function Page({ params }: { params: { slug: string } }) {
+  const post = getPostBySlug(params.slug, [
+    "title",
+    "slug",
+    "description",
+    "coverImage",
+    "date",
+    "info",
+    "tags",
+    "content",
+  ]) as unknown as PostType;
+
+  const rawContent = post.content || "";
+  const html = await markdownToHtml(rawContent);
+  const { html: content, toc } = addHeadingIdsAndToc(html);
+  const readMinutes = readingTime(rawContent);
+
+  const { title, date, coverImage, slug, tags } = post;
 
   return (
     <Box bg="detailBg" minH="100dvh">
-      <NextSeo
-        title={title}
-        description={info}
-        canonical={`${metaData.url}/post/${slug}`}
-        openGraph={{
-          url: `${metaData.url}/post/${slug}`,
-          images: [{ url: coverImage }],
-        }}
-      />
       <Navigation variant="detail" />
 
       <Flex
@@ -146,48 +166,4 @@ const Post = ({ post, toc, readMinutes }: DetailProps) => {
       </Flex>
     </Box>
   );
-};
-
-export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "slug",
-    "description",
-    "coverImage",
-    "date",
-    "info",
-    "tags",
-    "content",
-  ]);
-  const rawContent = post.content || "";
-  const html = await markdownToHtml(rawContent);
-  const { html: content, toc } = addHeadingIdsAndToc(html);
-  const readMinutes = readingTime(rawContent);
-
-  const allPosts = getAllPosts(["slug", "title", "date", "info", "tags"]).map((p) => ({
-    slug: p.slug,
-    title: p.title,
-    date: p.date,
-    ...(p.info ? { info: p.info } : {}),
-    ...(p.tags ? { tags: p.tags } : {}),
-  }));
-
-  return {
-    props: {
-      post: { ...post, content },
-      toc,
-      readMinutes,
-      allPosts,
-    },
-  };
 }
-
-export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
-  return {
-    paths: posts.map((post) => ({ params: { slug: post.slug } })),
-    fallback: false,
-  };
-}
-
-export default Post;

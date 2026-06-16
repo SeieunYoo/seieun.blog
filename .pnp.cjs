@@ -43,7 +43,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:4.2.1"],\
             ["gray-matter", "npm:4.0.3"],\
             ["next", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:13.5.6"],\
-            ["next-seo", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:6.5.0"],\
             ["next-themes", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:0.4.6"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:18.2.0"],\
@@ -9980,36 +9979,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["next-seo", [\
-        ["npm:6.5.0", {\
-          "packageLocation": "./.yarn/cache/next-seo-npm-6.5.0-022d3bd2e7-744e49cae3.zip/node_modules/next-seo/",\
-          "packageDependencies": [\
-            ["next-seo", "npm:6.5.0"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:6.5.0", {\
-          "packageLocation": "./.yarn/__virtual__/next-seo-virtual-eb039374d4/0/cache/next-seo-npm-6.5.0-022d3bd2e7-744e49cae3.zip/node_modules/next-seo/",\
-          "packageDependencies": [\
-            ["next-seo", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:6.5.0"],\
-            ["@types/next", null],\
-            ["@types/react", "npm:18.3.31"],\
-            ["@types/react-dom", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:18.3.7"],\
-            ["next", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:13.5.6"],\
-            ["react", "npm:18.2.0"],\
-            ["react-dom", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:18.2.0"]\
-          ],\
-          "packagePeers": [\
-            "@types/next",\
-            "@types/react-dom",\
-            "@types/react",\
-            "next",\
-            "react-dom",\
-            "react"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["next-themes", [\
         ["npm:0.4.6", {\
           "packageLocation": "./.yarn/cache/next-themes-npm-0.4.6-7c480d5b1d-295256ee56.zip/node_modules/next-themes/",\
@@ -10971,7 +10940,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:4.2.1"],\
             ["gray-matter", "npm:4.0.3"],\
             ["next", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:13.5.6"],\
-            ["next-seo", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:6.5.0"],\
             ["next-themes", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:0.4.6"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:36556719617f55b5a71e220d46035fb66e49b4084d296fbe3069d6d01fe33f0caeef78fa70d97ea08a900b1bc2c1ea0e29aa8405e4f5bab10dc3c84a0b8fb2a5#npm:18.2.0"],\

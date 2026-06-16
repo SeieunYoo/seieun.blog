@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import { useColorMode } from "@/components/ui/color-mode";
 

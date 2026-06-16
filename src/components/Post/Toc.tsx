@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Flex, chakra } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import type { TocItem } from "@/lib/post";

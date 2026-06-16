@@ -1,5 +1,7 @@
+"use client";
+
 import { Box, Flex, chakra } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { SearchIcon } from "@/components/ui/icons";
 import { formatDate } from "@/lib/post";

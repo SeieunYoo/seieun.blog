@@ -1,15 +1,15 @@
-import { getAllPosts } from "@/lib/api";
+"use client";
+
 import { PostType } from "@/types/types";
-import { NextPage } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 import { PreviewItem } from "@/components/home";
 import { Navigation } from "@/components";
 import { Wrap } from "@/components/Layout";
 
-const Home: NextPage<{ posts: PostType[] }> = ({ posts }) => {
+export const HomeClient = ({ posts }: { posts: PostType[] }) => {
   const allTags = useMemo(() => {
     const set = new Set<string>();
     posts.forEach((p) => p.tags?.forEach((t) => set.add(t)));
@@ -18,13 +18,12 @@ const Home: NextPage<{ posts: PostType[] }> = ({ posts }) => {
 
   // 필터는 URL(?tag=)을 source of truth 로 사용 → 공유 가능 + 상세 태그 클릭과 연동
   const router = useRouter();
-  const active = typeof router.query.tag === "string" ? router.query.tag : "All";
+  const searchParams = useSearchParams();
+  const active = searchParams.get("tag") ?? "All";
   const filtered = active === "All" ? posts : posts.filter((p) => p.tags?.includes(active));
 
   const selectTag = (tag: string) => {
-    router.replace(tag === "All" ? { pathname: "/" } : { pathname: "/", query: { tag } }, undefined, {
-      shallow: true,
-    });
+    router.replace(tag === "All" ? "/" : `/?tag=${encodeURIComponent(tag)}`, { scroll: false });
   };
 
   return (
@@ -137,20 +136,3 @@ const Home: NextPage<{ posts: PostType[] }> = ({ posts }) => {
     </>
   );
 };
-
-export async function getStaticProps() {
-  const posts = getAllPosts(["slug", "title", "date", "content", "coverImage", "info", "tags"]);
-  const allPosts = posts.map((p) => ({
-    slug: p.slug,
-    title: p.title,
-    date: p.date,
-    ...(p.info ? { info: p.info } : {}),
-    ...(p.tags ? { tags: p.tags } : {}),
-  }));
-
-  return {
-    props: { posts, allPosts },
-  };
-}
-
-export default Home;
