@@ -55,6 +55,21 @@ export const SunIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+export const MailIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    {...props}
+  >
+    <rect x="1.5" y="3" width="13" height="10" rx="2" />
+    <path d="M2 4.5l6 4 6-4" strokeLinecap="round" />
+  </svg>
+);
+
 export const ArrowIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="13"

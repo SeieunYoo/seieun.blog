@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { Box, Flex, chakra } from "@chakra-ui/react";
 import { Wrap } from "@/components/Layout";
@@ -24,6 +25,8 @@ const iconBtn = {
 export const Navigation = ({ variant = "home" }: { variant?: "home" | "detail" }) => {
   const { colorMode, mounted, toggleColorMode } = useColorMode();
   const { open } = useSearch();
+  const pathname = usePathname();
+  const isAbout = pathname === "/about";
 
   // utterances 댓글 테마를 현재 컬러모드에 동기화
   useEffect(() => {
@@ -79,6 +82,18 @@ export const Navigation = ({ variant = "home" }: { variant?: "home" | "detail" }
           </Link>
 
           <Flex align="center" gap={{ base: "16px", sm: "20px" }}>
+            <Link href="/about">
+              <Box
+                as="span"
+                fontSize="13px"
+                fontWeight={500}
+                color={isAbout ? "accent" : "faint"}
+                transition="color 0.15s"
+                _hover={{ color: "accent" }}
+              >
+                About
+              </Box>
+            </Link>
             <chakra.button type="button" aria-label="검색" onClick={open} css={iconBtn}>
               <SearchIcon />
             </chakra.button>
