@@ -1,0 +1,193 @@
+/* 상세 페이지 .article-body — 시안(Tech/mono)의 본문 타이포그래피. dark는 html.dark로 오버라이드. */
+.body {
+  --body-ink: #2a2a2a;
+  --ink-strong: #161616;
+  --hash: #b6b6b2;
+  --code-inline-bg: #f3f2f0;
+  --card-line: #e3e3e0;
+  --muted: #6e6e6e;
+  --accent: #e0533d;
+}
+
+:global(html.dark) .body {
+  --body-ink: #c2c2c8;
+  --ink-strong: #fafafa;
+  --hash: #55555c;
+  --code-inline-bg: #1d1d22;
+  --card-line: #232328;
+  --muted: #85858d;
+  --accent: #ff6f57;
+}
+
+.body p {
+  font: 400 16px/1.78 'Pretendard', sans-serif;
+  color: var(--body-ink);
+  margin: 0 0 20px;
+  word-break: keep-all;
+}
+
+.body h1 {
+  font: 700 26px/1.3 'Pretendard', sans-serif;
+  letter-spacing: -0.02em;
+  margin: 36px 0 16px;
+  color: var(--ink-strong);
+  scroll-margin-top: 80px;
+}
+
+.body h2 {
+  font: 700 21px/1.4 'Pretendard', sans-serif;
+  letter-spacing: -0.02em;
+  margin: 30px 0 14px;
+  color: var(--ink-strong);
+  scroll-margin-top: 80px;
+}
+
+.body h2 .hash {
+  color: var(--accent);
+}
+
+.body h3 {
+  font: 700 17px/1.45 'Pretendard', sans-serif;
+  margin: 24px 0 10px;
+  color: var(--ink-strong);
+  scroll-margin-top: 80px;
+}
+
+.body a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--muted);
+}
+.body a:hover {
+  text-decoration-color: currentColor;
+}
+
+.body ul,
+.body ol {
+  margin: 0 0 20px;
+  padding-left: 22px;
+  color: var(--body-ink);
+  font: 400 16px/1.78 'Pretendard', sans-serif;
+}
+.body ul { list-style: disc; }
+.body ol { list-style: decimal; }
+.body li { margin: 6px 0; }
+
+.body code {
+  font: 500 13px/1 'JetBrains Mono', monospace;
+  background: var(--code-inline-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--ink-strong);
+}
+
+.body pre {
+  font: 500 13px/1.7 'JetBrains Mono', monospace;
+  background: #15151a;
+  color: #e8e8e8;
+  padding: 16px 18px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 0 0 20px;
+  border: 1px solid var(--card-line);
+}
+
+.body pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: 13px;
+}
+
+/* 코드블럭 신택스 하이라이팅 (rehype-highlight / highlight.js 토큰).
+   토큰 클래스(hljs-*)는 dangerouslySetInnerHTML 로 주입된 원본 클래스라
+   CSS Module 해시가 적용되면 매칭되지 않으므로 :global 로 감싼다.
+   pre 배경이 라이트/다크 모두 어둡기 때문에 단일 다크 팔레트를 사용한다. */
+.body :global(.hljs-comment),
+.body :global(.hljs-quote),
+.body :global(.hljs-code),
+.body :global(.hljs-formula) {
+  color: #8b949e;
+}
+.body :global(.hljs-keyword),
+.body :global(.hljs-doctag),
+.body :global(.hljs-template-tag),
+.body :global(.hljs-template-variable),
+.body :global(.hljs-type),
+.body :global(.hljs-variable.language_) {
+  color: #ff7b72;
+}
+.body :global(.hljs-title),
+.body :global(.hljs-title.class_),
+.body :global(.hljs-title.function_) {
+  color: #d2a8ff;
+}
+.body :global(.hljs-attr),
+.body :global(.hljs-attribute),
+.body :global(.hljs-literal),
+.body :global(.hljs-meta),
+.body :global(.hljs-number),
+.body :global(.hljs-operator),
+.body :global(.hljs-variable),
+.body :global(.hljs-selector-attr),
+.body :global(.hljs-selector-class),
+.body :global(.hljs-selector-id) {
+  color: #79c0ff;
+}
+.body :global(.hljs-regexp),
+.body :global(.hljs-string),
+.body :global(.hljs-meta .hljs-string) {
+  color: #a5d6ff;
+}
+.body :global(.hljs-built_in),
+.body :global(.hljs-symbol) {
+  color: #ffa657;
+}
+.body :global(.hljs-name) {
+  color: #7ee787;
+}
+.body :global(.hljs-section) {
+  color: #79c0ff;
+  font-weight: 600;
+}
+.body :global(.hljs-bullet),
+.body :global(.hljs-link),
+.body :global(.hljs-selector-pseudo),
+.body :global(.hljs-selector-tag) {
+  color: #79c0ff;
+}
+.body :global(.hljs-addition) {
+  color: #aff5b4;
+  background: #033a16;
+}
+.body :global(.hljs-deletion) {
+  color: #ffdcd7;
+  background: #67060c;
+}
+.body :global(.hljs-emphasis) {
+  font-style: italic;
+}
+.body :global(.hljs-strong) {
+  font-weight: 600;
+}
+
+.body blockquote {
+  border-left: 3px solid var(--card-line);
+  margin: 0 0 20px;
+  padding: 4px 0 4px 16px;
+  color: var(--muted);
+}
+.body blockquote p { margin: 0; }
+
+.body img {
+  width: 100%;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.body hr {
+  border: 0;
+  border-top: 1px solid var(--card-line);
+  margin: 32px 0;
+}

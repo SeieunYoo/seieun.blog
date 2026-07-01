@@ -1,9 +1,6 @@
-import { PropsWithChildren } from "react";
+import { Box, type BoxProps } from "@chakra-ui/react";
 
-export const Layout = ({ children }: PropsWithChildren) => {
-  return (
-    <div className="max-w-screen min-h-screen mx-auto px-5 tablet:px-[18rem]  bg-gradient-to-r from-slate-200 to-sky-100 dark:from-gray-400 dark:to-gray-700 text-black dark:text-white">
-      {children}
-    </div>
-  );
-};
+/** 시안의 .wrap / .nav-inner — 1180px 중앙 정렬 + 반응형 좌우 패딩. */
+export const Wrap = (props: BoxProps) => (
+  <Box mx="auto" maxW="1180px" px={{ base: "20px", sm: "36px", lg: "72px" }} {...props} />
+);
