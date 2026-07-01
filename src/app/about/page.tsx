@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Box, Flex, chakra } from "@chakra-ui/react";
+import { Box, Flex, Link } from "@chakra-ui/react";
 import { Navigation } from "@/components";
 import { MailIcon } from "@/components/ui/icons";
 import { metaData } from "@/constants/metaData";
@@ -217,7 +217,7 @@ export default function AboutPage() {
             </Box>
 
             <Flex direction="column" gap="1px">
-              <chakra.a
+              <Link
                 href="mailto:seeun0792@gmail.com"
                 display="flex"
                 alignItems="center"
@@ -234,7 +234,7 @@ export default function AboutPage() {
                   <MailIcon />
                 </Box>
                 seeun0792@gmail.com
-              </chakra.a>
+              </Link>
             </Flex>
 
             <Box pt="22px" borderTop="1px solid" borderColor="line">
