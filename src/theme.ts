@@ -14,9 +14,10 @@ const config = defineConfig({
     },
     tokens: {
       fonts: {
+        // UI 폰트는 Pretendard 하나로 통일. (코드블럭만 article.module.css 에서 JetBrains Mono 유지)
         heading: { value: "'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif" },
         body: { value: "'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif" },
-        mono: { value: "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace" },
+        mono: { value: "'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif" },
       },
     },
     semanticTokens: {
@@ -58,6 +59,11 @@ const config = defineConfig({
         markBg: t("#fdf2c8", "#5a4d1e"),
         markInk: t("#161616", "#fde68a"),
         scrim: t("rgba(16,16,18,0.34)", "rgba(0,0,0,0.5)"),
+
+        // 메인 컬러(accent)
+        accent: t("#e0533d", "#ff6f57"),
+        accentStrong: t("#c8412c", "#ff8a76"),
+        accentSoft: t("rgba(224,83,61,0.10)", "rgba(255,111,87,0.14)"),
       },
     },
   },

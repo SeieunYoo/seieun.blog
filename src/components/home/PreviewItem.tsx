@@ -22,7 +22,12 @@ export const PreviewItem = ({ post, index }: { post: PostType; index: number }) 
       transition="background 0.15s"
       _hover={{
         bg: { base: "transparent", sm: "rowHover" },
-        "& .post-title": { textDecoration: "underline", textUnderlineOffset: "4px", textDecorationThickness: "1px" },
+        "& .post-title": {
+          textDecoration: "underline",
+          textUnderlineOffset: "4px",
+          textDecorationThickness: "1px",
+          textDecorationColor: "accent",
+        },
       }}
     >
       <Box
@@ -41,11 +46,9 @@ export const PreviewItem = ({ post, index }: { post: PostType; index: number }) 
 
       <Box flex="1" minW={0} order={{ base: 1, sm: 0 }}>
         <Box
-          fontFamily="mono"
           fontSize="11px"
           fontWeight={500}
-          letterSpacing="0.08em"
-          textTransform="uppercase"
+          letterSpacing="0.02em"
           color="faint"
           mb="12px"
         >

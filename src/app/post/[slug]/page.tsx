@@ -77,7 +77,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
               letterSpacing="0.04em"
               color="monoFaint"
               transition="color 0.15s"
-              _hover={{ color: "inkStrong" }}
+              _hover={{ color: "accent" }}
             >
               <Box as="span" display="flex" transform="rotate(180deg)">
                 <ArrowIcon />
@@ -124,11 +124,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <Flex gap="6px" mt="22px" wrap="wrap" align="center">
               <Box
                 as="span"
-                fontFamily="mono"
                 fontSize="11px"
                 fontWeight={500}
-                letterSpacing="0.1em"
-                textTransform="uppercase"
+                letterSpacing="0.02em"
                 color="monoFaint"
                 mr="4px"
               >
@@ -148,7 +146,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     px="10px"
                     py="6px"
                     transition="color 0.15s, border-color 0.15s"
-                    _hover={{ color: "inkStrong", borderColor: "monoFaint" }}
+                    _hover={{ color: "accent", borderColor: "accent" }}
                   >
                     #{tag}
                   </Box>

@@ -71,7 +71,7 @@ export const Navigation = ({ variant = "home" }: { variant?: "home" | "detail" }
                 w="8px"
                 h="16px"
                 ml="3px"
-                bg="ink"
+                bg="accent"
                 transform="translateY(2px)"
                 animation="blink 1.1s steps(1) infinite"
               />

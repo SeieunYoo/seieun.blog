@@ -34,11 +34,9 @@ export const HomeClient = ({ posts }: { posts: PostType[] }) => {
           {/* masthead */}
           <Box as="section" maxW="760px" pt={{ base: "44px", sm: "60px", lg: "88px" }} pb={{ base: "32px", sm: "56px" }}>
             <Box
-              fontFamily="mono"
               fontSize="12px"
               fontWeight={500}
-              letterSpacing="0.16em"
-              textTransform="uppercase"
+              letterSpacing="0.02em"
               color="faint"
               mb={{ base: "18px", sm: "26px" }}
             >
@@ -55,7 +53,11 @@ export const HomeClient = ({ posts }: { posts: PostType[] }) => {
             >
               프론트엔드 개발하며
               <br />
-              배운 것들을 기록합니다.
+              배운 것들을{" "}
+              <Box as="span" color="accent">
+                기록
+              </Box>
+              합니다.
             </Box>
           </Box>
 
@@ -83,20 +85,17 @@ export const HomeClient = ({ posts }: { posts: PostType[] }) => {
                   onClick={() => selectTag(tag)}
                   cursor="pointer"
                   whiteSpace="nowrap"
-                  color={active === tag ? "ink" : "faint"}
+                  color={active === tag ? "accent" : "faint"}
                   transition="color 0.15s"
-                  _hover={{ color: "ink" }}
+                  _hover={{ color: active === tag ? "accent" : "ink" }}
                 >
                   {tag}
                 </Box>
               ))}
             </Flex>
             <Box
-              fontFamily="mono"
               fontSize="11px"
               fontWeight={500}
-              letterSpacing="0.08em"
-              textTransform="uppercase"
               color="faint"
               whiteSpace="nowrap"
               flexShrink={0}
@@ -122,11 +121,9 @@ export const HomeClient = ({ posts }: { posts: PostType[] }) => {
             as="footer"
             pt={{ base: "36px", sm: "44px" }}
             pb={{ base: "48px", sm: "60px" }}
-            fontFamily="mono"
             fontSize={{ base: "10px", sm: "11px" }}
             fontWeight={500}
-            letterSpacing="0.1em"
-            textTransform="uppercase"
+            letterSpacing="0.02em"
             color="foot"
           >
             © 2026 Seieun Yoo — github.com/SeieunYoo

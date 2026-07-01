@@ -167,11 +167,9 @@ export function SearchModal({
           ) : (
             <>
               <Box
-                fontFamily="mono"
                 fontSize="10px"
                 fontWeight={500}
-                letterSpacing="0.12em"
-                textTransform="uppercase"
+                letterSpacing="0.02em"
                 color="searchPlaceholder"
                 px="12px"
                 pt="12px"
@@ -189,6 +187,7 @@ export function SearchModal({
                   borderRadius="8px"
                   cursor="pointer"
                   bg={i === sel ? "searchHover" : "transparent"}
+                  boxShadow={i === sel ? "inset 2px 0 0 var(--chakra-colors-accent)" : "none"}
                   onMouseMove={() => setSel(i)}
                   onClick={() => go(p.slug)}
                 >

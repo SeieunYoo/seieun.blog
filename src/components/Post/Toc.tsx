@@ -35,11 +35,9 @@ export const Toc = ({ items }: { items: TocItem[] }) => {
     <Box as="aside" w="200px" flexShrink={0} hideBelow="lg">
       <Box position="sticky" top="88px">
         <Box
-          fontFamily="mono"
           fontSize="11px"
           fontWeight={500}
-          letterSpacing="0.1em"
-          textTransform="uppercase"
+          letterSpacing="0.02em"
           color="monoFaint"
           mb="16px"
         >
@@ -57,13 +55,13 @@ export const Toc = ({ items }: { items: TocItem[] }) => {
                 fontSize={depth === 0 ? "13px" : "12px"}
                 fontWeight={depth === 0 ? 500 : 400}
                 lineHeight="1.5"
-                color={on ? "inkStrong" : "tocFaint"}
+                color={on ? "accent" : "tocFaint"}
                 borderLeft="2px solid"
-                borderColor={on ? "inkStrong" : "tocLine"}
+                borderColor={on ? "accent" : "tocLine"}
                 pl="12px"
                 py="4px"
                 transition="color 0.15s, border-color 0.15s"
-                _hover={{ color: "inkStrong" }}
+                _hover={{ color: on ? "accent" : "inkStrong" }}
               >
                 {it.text}
               </chakra.a>
