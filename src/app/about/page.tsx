@@ -168,8 +168,8 @@ const Job = ({
 
 export default function AboutPage() {
   return (
-    <Box bg="detailBg" minH="100dvh">
-      <Navigation variant="detail" />
+    <Box bg="canvas" minH="100dvh">
+      <Navigation />
 
       <Flex
         direction={{ base: "column", lg: "row" }}
@@ -315,11 +315,7 @@ export default function AboutPage() {
               </Bullet>
               <Bullet>
                 실시간 지표 모니터링으로 보상·게임 단계 정책을 <Strong>하루 만에</Strong> 조정해
-                데이터 기반 개선 주도
-              </Bullet>
-              <Bullet>
-                게임 로딩 <Key>50% 단축</Key>(2.5초 → 1.2초), 클라이언트 A/B 테스트 구조로 즉시 실험
-                가능한 환경 구축
+                데이터 기반 개선
               </Bullet>
             </Job>
 
@@ -334,8 +330,8 @@ export default function AboutPage() {
                 동일하게 동작하는 크로스플랫폼 컴포넌트 설계·구현
               </Bullet>
               <Bullet>
-                프리뷰·여백 린트·<Strong>Design-to-Code</Strong> 등 디자이너 생산성 도구를 개발해
-                디자인–개발 핸드오프 최소화
+                프리뷰·<Strong>Design-to-Code</Strong> 등 디자이너 생산성 도구를 개발해 디자인–개발
+                핸드오프 최소화
               </Bullet>
             </Job>
           </Box>

@@ -60,10 +60,10 @@ const config = defineConfig({
         markInk: t("#161616", "#fde68a"),
         scrim: t("rgba(16,16,18,0.34)", "rgba(0,0,0,0.5)"),
 
-        // 메인 컬러(accent)
-        accent: t("#e0533d", "#ff6f57"),
-        accentStrong: t("#c8412c", "#ff8a76"),
-        accentSoft: t("rgba(224,83,61,0.10)", "rgba(255,111,87,0.14)"),
+        // 메인 컬러(accent) — 베이비블루 파스텔톤
+        accent: t("#4FB6E8", "#7DD3FC"),
+        accentStrong: t("#2E93C7", "#A5E9FF"),
+        accentSoft: t("rgba(79,182,232,0.12)", "rgba(125,211,252,0.16)"),
       },
     },
   },
