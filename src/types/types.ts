@@ -4,6 +4,7 @@ export type PostType = {
   title: string;
   date: number;
   coverImage: string;
-  content: string;
+  content?: string;
+  readingMinutes?: number;
   info: string;
 };

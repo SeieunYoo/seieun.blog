@@ -1,11 +1,10 @@
 "use client";
 
 import { PostType } from "@/types/types";
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import { Box, Flex } from "@chakra-ui/react";
-import { PreviewItem } from "@/components/home";
+import { FeaturedPost, PostCard } from "@/components/home";
 import { Navigation } from "@/components";
 import { Wrap } from "@/components/Layout";
 
@@ -21,6 +20,7 @@ export const HomeClient = ({ posts }: { posts: PostType[] }) => {
   const searchParams = useSearchParams();
   const active = searchParams.get("tag") ?? "All";
   const filtered = active === "All" ? posts : posts.filter((p) => p.tags?.includes(active));
+  const [featured, ...rest] = filtered;
 
   const selectTag = (tag: string) => {
     router.replace(tag === "All" ? "/" : `/?tag=${encodeURIComponent(tag)}`, { scroll: false });
@@ -32,7 +32,12 @@ export const HomeClient = ({ posts }: { posts: PostType[] }) => {
       <Box as="main">
         <Wrap>
           {/* masthead */}
-          <Box as="section" maxW="760px" pt={{ base: "44px", sm: "60px", lg: "88px" }} pb={{ base: "32px", sm: "56px" }}>
+          <Box
+            as="section"
+            maxW="760px"
+            pt={{ base: "44px", sm: "60px", lg: "88px" }}
+            pb={{ base: "32px", sm: "56px" }}
+          >
             <Box
               fontSize="12px"
               fontWeight={500}
@@ -60,6 +65,18 @@ export const HomeClient = ({ posts }: { posts: PostType[] }) => {
               합니다.
             </Box>
           </Box>
+
+          {/* featured */}
+          {featured && (
+            <Box
+              pb={{ base: "36px", sm: "52px" }}
+              mb={{ base: "32px", sm: "44px" }}
+              borderBottom="1px solid"
+              borderColor="line"
+            >
+              <FeaturedPost post={featured} />
+            </Box>
+          )}
 
           {/* filter bar */}
           <Flex
@@ -105,13 +122,20 @@ export const HomeClient = ({ posts }: { posts: PostType[] }) => {
             </Box>
           </Flex>
 
-          {/* post list */}
-          <Box as="ul" listStyleType="none" m={0} p={0}>
-            {filtered.map((post, index) => (
+          {/* post grid */}
+          <Box
+            as="ul"
+            listStyleType="none"
+            m={0}
+            mt={{ base: "28px", sm: "32px" }}
+            p={0}
+            display="grid"
+            gridTemplateColumns={{ base: "1fr", sm: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }}
+            gap={{ base: "20px", sm: "24px" }}
+          >
+            {rest.map((post) => (
               <Box as="li" key={post.slug}>
-                <Link href={`/post/${post.slug}`}>
-                  <PreviewItem post={post} index={index} />
-                </Link>
+                <PostCard post={post} />
               </Box>
             ))}
           </Box>
