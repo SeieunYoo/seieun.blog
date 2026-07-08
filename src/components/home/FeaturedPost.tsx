@@ -70,7 +70,7 @@ export const FeaturedPost = ({ post }: { post: PostType }) => {
           </Box>
           <Flex align="center" gap="6px" fontSize="13px" fontWeight={600} color="ink">
             글 읽기
-            <Box as="span" display="flex" color="accent">
+            <Box as="span" display="flex" color="accent" aria-hidden="true">
               <ArrowIcon />
             </Box>
           </Flex>
