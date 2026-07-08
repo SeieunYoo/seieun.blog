@@ -11,6 +11,7 @@ export default function Page() {
     "coverImage",
     "info",
     "tags",
+    "content",
   ]) as unknown as PostType[];
 
   // HomeClient 가 useSearchParams 를 사용하므로 Suspense 로 감싼다.
