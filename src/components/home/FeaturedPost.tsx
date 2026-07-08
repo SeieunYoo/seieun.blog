@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { Box, Flex } from "@chakra-ui/react";
 import { PostType } from "@/types/types";
-import { formatDate, readingTime } from "@/lib/post";
+import { formatDate } from "@/lib/post";
 import { ArrowIcon } from "@/components/ui/icons";
 import { Thumb } from "./Thumb";
 
 /** 홈 상단의 최신 글 히어로 카드. */
 export const FeaturedPost = ({ post }: { post: PostType }) => {
-  const { title, date, info, coverImage, tags, content, slug } = post;
-  const minutes = readingTime(content);
+  const { title, date, info, coverImage, tags, readingMinutes, slug } = post;
 
   return (
     <Link href={`/post/${slug}`}>
@@ -44,7 +43,7 @@ export const FeaturedPost = ({ post }: { post: PostType }) => {
           </Flex>
           <Box fontFamily="mono" fontSize="12px" fontWeight={500} color="monoFaint" mb="14px">
             {formatDate(date)}
-            {tags?.[0] ? ` · ${tags[0]}` : ""} · {minutes} min
+            {tags?.[0] ? ` · ${tags[0]}` : ""} · {readingMinutes} min
           </Box>
           <Box
             className="featured-title"
