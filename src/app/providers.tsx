@@ -7,9 +7,11 @@ import { ColorModeProvider } from "@/components/ui/color-mode";
 import { SearchProvider } from "@/components/Search/SearchProvider";
 import type { SearchPost } from "@/components/Search/SearchModal";
 
+const EMPTY_SEARCH_POSTS: SearchPost[] = [];
+
 export function Providers({
   children,
-  searchPosts = [],
+  searchPosts = EMPTY_SEARCH_POSTS,
 }: {
   children: ReactNode;
   searchPosts?: SearchPost[];

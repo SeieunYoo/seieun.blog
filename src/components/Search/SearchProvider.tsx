@@ -10,6 +10,8 @@ type SearchContextValue = {
 
 const SearchContext = createContext<SearchContextValue | null>(null);
 
+const EMPTY_POSTS: SearchPost[] = [];
+
 export function useSearch() {
   const ctx = useContext(SearchContext);
   if (!ctx) throw new Error("useSearch must be used within <SearchProvider>");
@@ -17,7 +19,7 @@ export function useSearch() {
 }
 
 export function SearchProvider({
-  posts = [],
+  posts = EMPTY_POSTS,
   children,
 }: PropsWithChildren<{ posts?: SearchPost[] }>) {
   const [isOpen, setIsOpen] = useState(false);

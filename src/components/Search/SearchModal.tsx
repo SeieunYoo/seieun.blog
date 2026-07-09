@@ -67,7 +67,12 @@ export function SearchModal({
     });
   }, [posts, query]);
 
-  useEffect(() => setSel(0), [query]);
+  // query 가 바뀌면 선택 인덱스를 리셋한다 (렌더 중 비교라 추가 렌더가 없다).
+  const [prevQuery, setPrevQuery] = useState(query);
+  if (query !== prevQuery) {
+    setPrevQuery(query);
+    setSel(0);
+  }
 
   // 열릴 때 포커스 + 스크롤 락
   useEffect(() => {
